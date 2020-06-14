@@ -11,7 +11,7 @@ namespace TPELab1
         {
             InitializeComponent();
         }
-        
+
 
         DataTable calcualteFull(int n)
         {
@@ -46,17 +46,17 @@ namespace TPELab1
         {
             dataGridView2.Columns.Clear();
 
-            DataTable dt = calcualteFull(n );
+            DataTable dt = calcualteFull(n);
             dt.Columns.RemoveAt(dt.Columns.Count - 1);
 
             int cnt = 0;
 
-            for (int i = 1; i < n+1; i++)
+            for (int i = 1; i < n + 1; i++)
             {
-                for (int j = i + 1; j < n+1; j++)
+                for (int j = i + 1; j < n + 1; j++)
                 {
                     cnt++;
-                    string name=dt.Columns[i].ColumnName + " x " + dt.Columns[j].ColumnName;
+                    string name = dt.Columns[i].ColumnName + " x " + dt.Columns[j].ColumnName;
                     dt.Columns.Add(name);
                     for (int k = 0; k < dt.Rows.Count; k++)
                     {
@@ -78,7 +78,7 @@ namespace TPELab1
 
             dt.Columns.Add("y");
             for (int i = 0; i < dt.Rows.Count; i++)
-                dt.Rows[i][n +p+1] = "y";
+                dt.Rows[i][n + p + 1] = "y";
 
             return dt;
         }
@@ -101,7 +101,7 @@ namespace TPELab1
             dataGridView2.Columns.Clear();
             int n = (int) nuN.Value;
             int p = (int) nuP.Value;
-            DataTable dt = calcualteNotFull(n-p, p);
+            DataTable dt = calcualteNotFull(n - p, p);
             dataGridView2.DataSource = dt;
         }
 
@@ -112,14 +112,17 @@ namespace TPELab1
 
         private void nuN_ValueChanged(object sender, EventArgs e)
         {
-            int n = (int)(nuN.Value);
+            int n = (int) (nuN.Value);
 
-            int p_max = (n-1) / 2;
-            
-            if (nuP.Value  > p_max)
+            int n_p = (int) Math.Ceiling(0.5 * (-1 + Math.Sqrt(1 + 8 * n)));
+
+            int p_max = -1;
+
+            p_max = n - n_p;
+            p_max = Math.Max(0, p_max);
+            if (nuP.Value > p_max)
                 nuP.Value = p_max;
             nuP.Maximum = p_max;
-            
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
