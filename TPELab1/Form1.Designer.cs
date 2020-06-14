@@ -179,7 +179,7 @@
             this.nuN.Name = "nuN";
             this.nuN.Size = new System.Drawing.Size(140, 23);
             this.nuN.TabIndex = 5;
-            this.nuN.Value = new decimal(new int[] {2, 0, 0, 0});
+            this.nuN.Value = new decimal(new int[] {4, 0, 0, 0});
             this.nuN.ValueChanged += new System.EventHandler(this.nuN_ValueChanged);
             // 
             // dataGridView2

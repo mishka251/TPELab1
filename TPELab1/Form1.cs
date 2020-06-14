@@ -101,7 +101,7 @@ namespace TPELab1
             dataGridView2.Columns.Clear();
             int n = (int) nuN.Value;
             int p = (int) nuP.Value;
-            DataTable dt = calcualteNotFull(n, p);
+            DataTable dt = calcualteNotFull(n-p, p);
             dataGridView2.DataSource = dt;
         }
 
@@ -114,9 +114,9 @@ namespace TPELab1
         {
             int n = (int)(nuN.Value);
 
-            int p_max = (n - 1) * (n) / 2;
+            int p_max = (n-1) / 2;
             
-            if (nuP.Value  >= p_max)
+            if (nuP.Value  > p_max)
                 nuP.Value = p_max;
             nuP.Maximum = p_max;
             
@@ -125,23 +125,6 @@ namespace TPELab1
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             // CalculateFull();
-        }
-
-
-        NumericUpDown Clone(NumericUpDown src)
-        {
-            NumericUpDown res = new NumericUpDown();
-            res.Width = src.Width;
-            res.Height = src.Height;
-            res.Top = src.Top;
-            res.Left = src.Left + src.Width + 20;
-
-            res.Maximum = src.Maximum;
-            res.Minimum = src.Minimum;
-            res.Value = 1;
-            tabPage2.Controls.Add(res);
-
-            return res;
         }
 
         private void nuP_ValueChanged(object sender, EventArgs e)
