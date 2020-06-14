@@ -53,26 +53,27 @@ namespace TPELab1
 
             for (int i = 1; i < n + 1; i++)
             {
+                if (cnt == p)
+                {
+                    break;
+                }
+
                 for (int j = i + 1; j < n + 1; j++)
                 {
-                    cnt++;
-                    string name = dt.Columns[i].ColumnName + " x " + dt.Columns[j].ColumnName;
-                    dt.Columns.Add(name);
-                    for (int k = 0; k < dt.Rows.Count; k++)
-                    {
-                        dt.Rows[k][n + cnt] =
-                            int.Parse(dt.Rows[k][i].ToString()) * int.Parse(dt.Rows[k][j].ToString());
-                    }
-
                     if (cnt == p)
                     {
                         break;
                     }
-                }
 
-                if (cnt == p)
-                {
-                    break;
+                    string name = dt.Columns[i].ColumnName + " x " + dt.Columns[j].ColumnName;
+                    dt.Columns.Add(name);
+                    for (int k = 0; k < dt.Rows.Count; k++)
+                    {
+                        dt.Rows[k][n + cnt + 1] =
+                            int.Parse(dt.Rows[k][i].ToString()) * int.Parse(dt.Rows[k][j].ToString());
+                    }
+
+                    cnt++;
                 }
             }
 
